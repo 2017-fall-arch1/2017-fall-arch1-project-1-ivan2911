@@ -39,13 +39,13 @@ $ make clean
 4. Be sure you understand how these codes use malloc() and free().
 5. Notice how the Makefile specifies the dependencies 
 6. Try extending llist.  Perhaps
-  A. adding an llCheck() method to llist.c and llist.h
+  - adding an llCheck() method to llist.c and llist.h
      - that checks that the llist consistent
      - and modifying llDemo to use it
-  B. adding llGet() method to llist.c and llist.h
+  - adding llGet() method to llist.c and llist.h
      - that discards the first item and returns the string it contained
      - writing another demo (probably starting with ours) that tests llGet().
      - be sure to use llCheck
      - and adding Makefile productions to compile & test it
- C. the same as #1, but now add llReverse that reverses list order to llist.c
+  - the same as #1, but now add llReverse that reverses list order to llist.c
 
