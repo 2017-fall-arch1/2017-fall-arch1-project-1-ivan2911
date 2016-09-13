@@ -52,5 +52,5 @@ $ make clean
      - writing another demo (probably starting with ours) that tests llGet().
      - be sure to use llCheck
      - and adding Makefile productions to compile & test it
-  - the same as #1, but now add llReverse that reverses list order to llist.c
+  - the same as above, but now add llReverse that reverses list order to llist.c
 
