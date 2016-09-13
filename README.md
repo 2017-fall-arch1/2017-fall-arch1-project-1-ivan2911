@@ -15,13 +15,19 @@ This demo contains the following files:
  
 
 To compile:
-~~~$ make~~~
+~~~
+$ make
+~~~
 
 To test it, try:
-~~~$ make demo~~~
+~~~
+$ make demo
+~~~
 
 To delete binaries:
-~~~$ make clean~~~
+~~~
+$ make clean
+~~~
 
 # Things to figure out #
 
@@ -33,9 +39,10 @@ To delete binaries:
 4. Be sure you understand how these codes use malloc() and free().
 5. Notice how the Makefile specifies the dependencies 
 6. Try extending llist.  Perhaps
- A'   - adding an llCheck() method to llist.c and llist.h that checks that the llist consistent
+  A. adding an llCheck() method to llist.c and llist.h
+     - that checks that the llist consistent
      - and modifying llDemo to use it
- B.  - adding llGet() method to llist.c and llist.h
+  B. adding llGet() method to llist.c and llist.h
      - that discards the first item and returns the string it contained
      - writing another demo (probably starting with ours) that tests llGet().
      - be sure to use llCheck
