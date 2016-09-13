@@ -13,6 +13,8 @@ typedef struct {
   LLItem *first, *last;
 } LList;
 
+extern int llDoCheck;		/* set true for paranoid consistency checking */
+
 /* create a new list */
 LList *llAlloc();
 
@@ -27,5 +29,8 @@ void llMakeEmpty(LList *lp);
 
 /* print list membership.  Prints default mesage if message is NULL */
 void llPrint(LList *lp, char *msg);
+
+/* check llist consistency, always returns zero */
+int llCheck(LList *lp);
 
 #endif	/* included */

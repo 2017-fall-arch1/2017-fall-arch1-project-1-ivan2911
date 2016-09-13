@@ -34,14 +34,12 @@ $ make clean
 1. Examine llist.h.  It defines llist's structures and declares llist's interface.
   - seriously, look at the comments too.
   - notice how the #ifndef/endif at the top/botom prevents multiple inclusion
-2. Peek at llist.c to see how llist's functions are implemented
+2. Peek at llist.c to see how llist's functions are implemented.
+   Be sure to check out how llCheck, llDoCheck and doCheck interact.  
 3. Peek at llistDemo to see how llist is used.
 4. Be sure you understand how these codes use malloc() and free().
 5. Notice how the Makefile specifies the dependencies 
 6. Try extending llist.  Perhaps
-  - adding an llCheck() method to llist.c and llist.h
-     - that checks that the llist consistent
-     - and modifying llDemo to use it
   - adding llGet() method to llist.c and llist.h
      - that discards the first item and returns the string it contained
      - writing another demo (probably starting with ours) that tests llGet().

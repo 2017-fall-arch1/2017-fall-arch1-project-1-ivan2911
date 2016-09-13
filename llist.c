@@ -1,18 +1,25 @@
 #include <stdio.h>		/* for puts,  */
 #include <stdlib.h> 		/* for malloc */
-#include "llist.h"		/*  */
+#include <assert.h>		/* for assert */
+#include "llist.h"		
+
+int llDoCheck = 1;		/* set true for paranoid consistency checking */
+
+#define doCheck(_lp) (llDoCheck && llCheck(_lp))
 
 /* create a new list */
 LList *llAlloc()
 {
   LList *lp = (LList *)malloc(sizeof(LList));
   lp->first = lp->last = 0;
+  doCheck(lp);
   return lp;
 }
 
 /* recycle a list, discarding all items it contains */
 void llFree(LList *lp)
 {
+  doCheck(lp);
   llMakeEmpty(lp);
   free(lp);
 }
@@ -21,6 +28,7 @@ void llFree(LList *lp)
 void llMakeEmpty(LList *lp)
 {
   LLItem *current = lp->first, *next;
+  doCheck(lp);
   while (current) {
     next = current->next;
     free(current->str);
@@ -28,6 +36,7 @@ void llMakeEmpty(LList *lp)
     current = next;
   }
   lp->first = lp->last = 0;	/* list is empty */
+  doCheck(lp);
 }
   
 /* append a copy of str to end of list */
@@ -37,6 +46,7 @@ void llPut(LList *lp, char *s)
   char *scopy;
   LLItem *i;
 
+  doCheck(lp);
   /* w = freshly allocated copy of putWord */
   for (len = 0; s[len]; len++) /* compute length */
     ;
@@ -60,6 +70,7 @@ void llPut(LList *lp, char *s)
 
   /* new item is last on list */
   lp->last = i;
+  doCheck(lp);
 }
 
 /* print list membership.  Prints default mesage if message is NULL */
@@ -67,9 +78,24 @@ void llPrint(LList *lp, char *msg)
 {
   LLItem *ip;
   int count = 1;
+  doCheck(lp);
   puts(msg ? msg :" List contents:");
   for (ip = lp->first; ip; ip = ip->next) {
     printf("  %d: <%s>\n", count, ip->str);
     count++;
   }
+}
+
+/* check llist consistency */
+int llCheck(LList *lp)
+{
+  LLItem *ip;
+  ip = lp->first;
+  if (!ip) 
+    assert(lp->last == 0);
+  else {
+    for (; ip->next; ip = ip->next);
+    assert(ip == lp->last);
+  }
+  return 0;
 }

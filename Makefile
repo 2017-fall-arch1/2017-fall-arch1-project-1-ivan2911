@@ -1,4 +1,4 @@
-all: llistDemo
+all: llDemo
 
 CFLAGS=-g -O3
 
