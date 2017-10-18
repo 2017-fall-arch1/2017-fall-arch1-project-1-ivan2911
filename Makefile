@@ -1,4 +1,4 @@
-all: llDemo
+all: main
 
 CFLAGS=-g -O3
 
@@ -6,18 +6,20 @@ CFLAGS=-g -O3
 #   $@ is the production's target
 #   $^ are the production's prerequisites
 
-llDemo: llist.o llDemo.o
-	cc -o $@ $^
+main: func.o main.o
+	cc -o $@ $^ -lm
 
-llist.o: llist.c llist.h
-	cc -c $(CFLAGS) llist.c
+func.o: functions.c func.h
+	cc -c $(CFLAGS) func.c
 
-llDemo.o: llDemo.c llist.h
-	cc -c $(CFLAGS) llDemo.c
+main.o: main.c func.h
+	cc -c $(CFLAGS) main.c
+
+
 
 clean:
-	rm -f *.o llDemo
+	rm -f *.o main
 
-demo: llDemo
-	(echo first; echo "second line"; echo "third and last") | ./llDemo
+demo: main
+	./main
 
