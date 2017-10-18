@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef func_h
+#define func_h
 
 
 typedef struct node {
